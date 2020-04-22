@@ -28,8 +28,8 @@ func dataSourceProject() *schema.Resource {
 			},
 			"mock": &schema.Schema{
 				Type:     schema.TypeBool,
-				Computed: false,
 				Default:  false,
+				Optional: true,
 			},
 		},
 	}

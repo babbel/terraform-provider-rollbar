@@ -32,8 +32,8 @@ func dataSourceProjectAccessToken() *schema.Resource {
 			},
 			"mock": &schema.Schema{
 				Type:     schema.TypeBool,
-				Computed: false,
 				Default:  false,
+				Optional: true,
 			},
 			"status": &schema.Schema{
 				Type:     schema.TypeString,
