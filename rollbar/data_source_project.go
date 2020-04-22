@@ -26,11 +26,20 @@ func dataSourceProject() *schema.Resource {
 				Type:     schema.TypeInt,
 				Computed: true,
 			},
+			"mock": &schema.Schema{
+				Type:     schema.TypeBool,
+				Computed: false,
+				Default:  false,
+			},
 		},
 	}
 }
 
 func dataSourceProjectRead(d *schema.ResourceData, meta interface{}) error {
+	if d.Get("mock").(bool) {
+		return nil
+	}
+
 	name := d.Get("name").(string)
 
 	client := meta.(*rollbar.Client)

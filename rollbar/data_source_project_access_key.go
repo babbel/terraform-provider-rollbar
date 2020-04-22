@@ -30,6 +30,11 @@ func dataSourceProjectAccessToken() *schema.Resource {
 				Type:     schema.TypeInt,
 				Computed: true,
 			},
+			"mock": &schema.Schema{
+				Type:     schema.TypeBool,
+				Computed: false,
+				Default:  false,
+			},
 			"status": &schema.Schema{
 				Type:     schema.TypeString,
 				Computed: true,
@@ -39,6 +44,10 @@ func dataSourceProjectAccessToken() *schema.Resource {
 }
 
 func dataSourceProjectAccessTokenRead(d *schema.ResourceData, meta interface{}) error {
+	if d.Get("mock").(bool) {
+		return nil
+	}
+
 	name := d.Get("name").(string)
 	projectID := d.Get("project_id").(int)
 
